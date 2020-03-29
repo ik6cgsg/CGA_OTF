@@ -85,7 +85,9 @@ class NURBS(object):
         """
         Special generator for yielding curve point in certain position.
         """
-        for u in np.arange(0.0, 1.0, step):
+        start_u = self.knots[self.degree]
+        end_u = self.knots[len(self.knots) - 1 - self.degree]
+        for u in np.arange(start_u, end_u, step):
             if verbose:
                 print("u: %f" % u)
             yield self.value(u)
