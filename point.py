@@ -1,3 +1,6 @@
+from wpoint import WeightedPoint
+
+
 class Point3d(object):
     def __init__(self, x: float, y: float, z: float):
         self.x = x
@@ -13,6 +16,5 @@ class Point3d(object):
     def __str__(self):
         return "Point3d(%s, %s, %s)" % (self.x, self.y, self.z)
 
-    def toWPoint(self):
-        from wpoint import WeightedPoint
+    def to_weighted_point(self):
         return WeightedPoint(self.x / self.z, self.y / self.z, self.z)

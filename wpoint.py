@@ -1,5 +1,6 @@
 from point import Point3d
 
+
 class WeightedPoint(object):
     def __init__(self, x: float, y: float, w: float):
         self.x = x
