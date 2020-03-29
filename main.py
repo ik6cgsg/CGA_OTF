@@ -1,18 +1,25 @@
-from nurbs import NURBS
-from wpoint import WeightedPoint
+from nurbs import NURBS, NURBSException
+from common import WeightedPoint
 
 
 if __name__ == "__main__":
     """Example from http://nurbscalculator.in/"""
-    degree = 3
+    degree = 2
     ctrl_points = [
-        WeightedPoint(-4, -4, 0.4),
-        WeightedPoint(-2, 4, 1),
-        WeightedPoint(2, -4, 1),
-        WeightedPoint(4, 4, 0.7)]
+        WeightedPoint(5, -5, 1),
+        WeightedPoint(-5, 2, 1),
+        WeightedPoint(-2, 5, 1),
+        WeightedPoint(0, 2, 1),
+        WeightedPoint(2, 5, 1),
+        WeightedPoint(5, 2, 1),
+        WeightedPoint(-5, -5, 1)]
 
-    knots = [0, 0, 0, 0, 1, 1, 1, 1]
+    knots = [0.1, 0.2, 0.3, 0.4, 0.5, 0.5, 0.6, 0.7, 0.8, 0.9]
     nurbs = NURBS()
-    if nurbs.set_params(degree, ctrl_points, knots):
-        u = 0.37
-        print("value at %s = %s" % (u, nurbs.value(u)))
+
+    try:
+        nurbs.set_params(degree, ctrl_points, knots)
+        nurbs.draw_curve(verbose=True)
+        nurbs.draw_curve_and_save_gif(path_to_save="./results/heart_curve.gif", verbose=True)
+    except NURBSException as e:
+        print("Exception caught: %s" % str(e))
