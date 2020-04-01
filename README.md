@@ -2,7 +2,8 @@
 
 ## Task
 
-Была реализована задача по визуализации работы алгоритма де Бора для NURBS
+Here you can see implementation of De Boor's algorithm for NURBS curves
+with pretty nice visualization! 
 
 ## Examples
 
